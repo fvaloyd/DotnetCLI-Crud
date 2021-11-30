@@ -1,0 +1,34 @@
+@model IEnumerable<Practica.Models.Producto>
+
+@{
+    ViewData["tittle"] = "Productos";
+}
+
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                <th>@Html.DisplayNameFor(model => model.Activo)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaDeAlta)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Producto producto in @Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => producto.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => producto.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => producto.Precio)</td>
+                    <td>@Html.DisplayFor(modelItem => producto.Activo)</td>
+                    <td>@Html.DisplayFor(modelItem => producto.FechaDeAlta)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.ActionLink("Crear Producto","Create")

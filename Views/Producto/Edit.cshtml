@@ -1,0 +1,36 @@
+@model Practica.Models.Producto
+
+@{
+    ViewData["Tittle"] = "Editar un producto"; 
+}
+
+<form asp-action="Edit" class="form col-md-3">
+
+    <input type="hidden" asp-for="Id"/>
+
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control"/>
+        @Html.ValidationMessageFor(m => m.Nombre, "El nombre es requerido", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descripcion"></label>
+        <input asp-for="Descripcion" class="form-control"/>
+        @Html.ValidationMessageFor(m => m.Descripcion, "La descripcion es requerida", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Precio"></label>
+        <input asp-for="Precio" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Activo" class="form-check-label"></label>
+        <input asp-for="Activo" class="check"/>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary mt-2"/>
+    </div>
+</form>
