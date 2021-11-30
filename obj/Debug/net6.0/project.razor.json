@@ -16333,6 +16333,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/francis/Documentos/Practica/Views/Producto/Delete.cshtml",
+      "TargetPath": "Views\\Producto\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/francis/Documentos/Practica/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

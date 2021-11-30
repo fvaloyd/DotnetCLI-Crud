@@ -26,7 +26,7 @@ namespace Practica.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Producto producto)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 producto.FechaDeAlta = DateTime.Now;
 
@@ -44,15 +44,15 @@ namespace Practica.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             //validamos si el id existe
-            if(id==0)NotFound();
+            if (id == 0) NotFound();
 
 
             //traemos el producto de la bd que concuerde con el id del querystring
             var producto = await _context.Productos.FindAsync(id);
             //var producto1 = await _context.Productos.FirstOrDefaultAsync(p => p.Id == id);
             //validos si el producto es null
-            if(producto == null)NotFound();
-            
+            if (producto == null) NotFound();
+
             //le mandamos a la vista el producto a editar
             return View(producto);
         }
@@ -62,9 +62,9 @@ namespace Practica.Controllers
         public async Task<IActionResult> Edit(int id, Producto producto)
         {
             // validamos que los id sean iguales
-            if(id != producto.Id)NotFound();
+            if (id != producto.Id) NotFound();
             // validamos que el producto editado es valido
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // actualizamos
                 _context.Update(producto);
@@ -75,6 +75,34 @@ namespace Practica.Controllers
             }
             // en caso de que no sea valido cargamos la pagina con el producto a editar nuevamente
             return View(producto);
+        }
+
+        // Delete GET:
+        public async Task<IActionResult> Delete(int id)
+        {
+            //validamos el id
+            if (id == 0) NotFound();
+
+            // optenemos el producto a borrar
+            var producto = await _context.Productos.FindAsync(id);
+
+            // validamos que dicho producto no sea nulo
+            if (producto == null) NotFound();
+
+            // retornamos la vista con el producto a borrar
+            return View(producto);
+        }
+
+        // Delete POST:
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var producto = await _context.Productos.FindAsync(id);
+
+            _context.Productos.Remove(producto);
+            await _context.SaveChangesAsync();
+            
+            return RedirectToAction(nameof(Index));
         }
 
     }
