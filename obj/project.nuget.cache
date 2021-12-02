@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2hVT0154oJ4Ci+efI9dkAV0hEcyvqoJ2QmbIUru90sIP6NYQccAmq0CVDYErjW3z1FRHw2Byz1WcDUMOAMDpbw==",
+  "dgSpecHash": "1V10c3q04rHGP/Ci3D/DzEvozDZPyCGeQrFbSqF3bTliGbx3+r0HFCTx5kIToPaeF5C3O45EKYSGyVF0CWfPTg==",
   "success": true,
-  "projectFilePath": "/home/francis/Documentos/Practica/Practica.csproj",
+  "projectFilePath": "/home/francis/Documentos/DotnetCLI-Crud/Practica.csproj",
   "expectedPackageFiles": [
     "/home/francis/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/francis/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/6.0.0/microsoft.aspnetcore.diagnostics.entityframeworkcore.6.0.0.nupkg.sha512",

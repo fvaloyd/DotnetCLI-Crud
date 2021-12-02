@@ -76,7 +76,6 @@ namespace Practica.Controllers
             // en caso de que no sea valido cargamos la pagina con el producto a editar nuevamente
             return View(producto);
         }
-
         // Delete GET:
         public async Task<IActionResult> Delete(int id)
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/francis/Documentos/Practica/Practica.csproj": {}
+    "/home/francis/Documentos/DotnetCLI-Crud/Practica.csproj": {}
   },
   "projects": {
-    "/home/francis/Documentos/Practica/Practica.csproj": {
+    "/home/francis/Documentos/DotnetCLI-Crud/Practica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/francis/Documentos/Practica/Practica.csproj",
+        "projectUniqueName": "/home/francis/Documentos/DotnetCLI-Crud/Practica.csproj",
         "projectName": "Practica",
-        "projectPath": "/home/francis/Documentos/Practica/Practica.csproj",
+        "projectPath": "/home/francis/Documentos/DotnetCLI-Crud/Practica.csproj",
         "packagesPath": "/home/francis/.nuget/packages/",
-        "outputPath": "/home/francis/Documentos/Practica/obj/",
+        "outputPath": "/home/francis/Documentos/DotnetCLI-Crud/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/francis/.nuget/NuGet/NuGet.Config"
