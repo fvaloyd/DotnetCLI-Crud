@@ -1,3 +1,5 @@
+using DotnetCLI_Crud.data.Repository;
+using DotnetCLI_Crud.data.Repository.interfaces;
 using Microsoft.EntityFrameworkCore;
 using Practica.data;
 
@@ -7,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Connectionstring
-var connectionString = builder.Configuration.GetConnectionString("ProductoContext");
+var connectionString = builder.Configuration.GetConnectionString("ProductoContext"); 
 builder.Services.AddDbContext<ProductoContext>(options => options.UseSqlite(connectionString));
 
+// Repository
+builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 
 var app = builder.Build();
 

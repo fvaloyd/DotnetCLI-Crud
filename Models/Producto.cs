@@ -5,7 +5,7 @@ namespace Practica.Models
     public class Producto
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage ="El nombre es requerido")]
         [StringLength(50)]
         public string? Nombre { get; set; }
         [Required]

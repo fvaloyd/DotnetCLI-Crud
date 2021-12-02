@@ -1,3 +1,4 @@
+using DotnetCLI_Crud.data.Repository.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Practica.data;
@@ -7,12 +8,19 @@ namespace Practica.Controllers
 {
     public class ProductoController : Controller
     {
+        private readonly IProductoRepository _productoRepo;
         private readonly ProductoContext _context;
-        public ProductoController(ProductoContext context) => _context = context;
+        public ProductoController(ProductoContext context, IProductoRepository productoRepo) 
+        {
+             _context = context;
+             _productoRepo = productoRepo;
 
+        }
         public async Task<IActionResult> Index()
         {
-            var productos = await _context.Productos.ToListAsync();
+            //var productos = await _context.Productos.ToListAsync();
+            // trayendo los datos desde el repository
+            var productos = await _productoRepo.GetAll();
             return View(productos);
         }
 
@@ -28,12 +36,7 @@ namespace Practica.Controllers
         {
             if (ModelState.IsValid)
             {
-                producto.FechaDeAlta = DateTime.Now;
-
-                /// logica para grabar los datos en la BD
-                _context.Add(producto);
-                await _context.SaveChangesAsync();
-
+                await _productoRepo.Create(producto);
                 /// redireccionar al index
                 return RedirectToAction(nameof(Index));
             }
@@ -48,7 +51,7 @@ namespace Practica.Controllers
 
 
             //traemos el producto de la bd que concuerde con el id del querystring
-            var producto = await _context.Productos.FindAsync(id);
+            var producto = await _productoRepo.GetById(id);
             //var producto1 = await _context.Productos.FirstOrDefaultAsync(p => p.Id == id);
             //validos si el producto es null
             if (producto == null) NotFound();
@@ -66,10 +69,7 @@ namespace Practica.Controllers
             // validamos que el producto editado es valido
             if (ModelState.IsValid)
             {
-                // actualizamos
-                _context.Update(producto);
-                // guardamos cambios
-                await _context.SaveChangesAsync();
+                await _productoRepo.Update(producto);
                 // redireccionamos al index
                 return RedirectToAction(nameof(Index));
             }
@@ -83,7 +83,7 @@ namespace Practica.Controllers
             if (id == 0) NotFound();
 
             // optenemos el producto a borrar
-            var producto = await _context.Productos.FindAsync(id);
+            var producto = await _productoRepo.GetById(id);
 
             // validamos que dicho producto no sea nulo
             if (producto == null) NotFound();
@@ -96,10 +96,8 @@ namespace Practica.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {
-            var producto = await _context.Productos.FindAsync(id);
-
-            _context.Productos.Remove(producto);
-            await _context.SaveChangesAsync();
+            var producto = await _productoRepo.GetById(id);
+            if(producto != null) await _productoRepo.Delete(producto);
             
             return RedirectToAction(nameof(Index));
         }
