@@ -7,27 +7,30 @@
 <form asp-action="Edit" class="form col-md-3">
 
     <input type="hidden" asp-for="Id"/>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
         <label asp-for="Nombre"></label>
         <input asp-for="Nombre" class="form-control"/>
-        @Html.ValidationMessageFor(m => m.Nombre, "El nombre es requerido", new { @class = "text-danger" })
+        <span asp-validation-for="Nombre" class="text-danger"></span> 
     </div>
 
     <div class="form-group">
         <label asp-for="Descripcion"></label>
         <input asp-for="Descripcion" class="form-control"/>
-        @Html.ValidationMessageFor(m => m.Descripcion, "La descripcion es requerida", new { @class = "text-danger" })
+        <span asp-validation-for="Descripcion" class="text-danger"></span> 
     </div>
 
     <div class="form-group">
         <label asp-for="Precio"></label>
         <input asp-for="Precio" class="form-control"/>
+        <span asp-validation-for="Precio" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Activo" class="form-check-label"></label>
         <input asp-for="Activo" class="check"/>
+        <span asp-validation-for="Activo" class="text-danger"></span>
     </div>
 
     <div class="form-group">
