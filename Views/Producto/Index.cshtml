@@ -4,7 +4,6 @@
     ViewData["tittle"] = "Productos";
 }
 
-@Html.ActionLink("Crear Producto","Create")
 
 <div class="row">
     <table class="table">
@@ -28,12 +27,12 @@
                     <td>@Html.DisplayFor(modelItem => producto.Activo)</td>
                     <td>@Html.DisplayFor(modelItem => producto.FechaDeAlta)</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id=@producto.Id>Editar</a>
-                        <a asp-action="Delete" asp-route-id=@producto.Id>Borrar</a>
+                        <a class="btn btn-info" asp-action="Edit" asp-route-id=@producto.Id>Editar</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id=@producto.Id>Borrar</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
+@Html.ActionLink("Crear nuevo producto","Create","Producto",new {},new {@class="btn btn-primary"})
