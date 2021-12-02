@@ -9,10 +9,8 @@ namespace Practica.Controllers
     public class ProductoController : Controller
     {
         private readonly IProductoRepository _productoRepo;
-        private readonly ProductoContext _context;
-        public ProductoController(ProductoContext context, IProductoRepository productoRepo) 
+        public ProductoController(IProductoRepository productoRepo) 
         {
-             _context = context;
              _productoRepo = productoRepo;
 
         }
