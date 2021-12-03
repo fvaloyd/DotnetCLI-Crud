@@ -43,6 +43,7 @@ namespace Practica.Controllers
                 /// redireccionar al index
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.MensajeError = "El modelo no es valido";
             return View(producto);
         }
 
@@ -73,7 +74,7 @@ namespace Practica.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _productoRepo.Update(producto);
-                if(result < 0)
+                if(result <= 0)
                 {
                     ViewBag.MensajeError = "Error al editar el producto, intentelo de nuevo";
                     return View(producto);
@@ -82,6 +83,7 @@ namespace Practica.Controllers
                 return RedirectToAction(nameof(Index));
             }
             // en caso de que no sea valido cargamos la pagina con el producto a editar nuevamente
+            ViewBag.MensajeError = "El modelo no es valido";
             return View(producto);
         }
         // Delete GET:
