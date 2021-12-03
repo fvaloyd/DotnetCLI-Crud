@@ -34,7 +34,12 @@ namespace Practica.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _productoRepo.Create(producto);
+                var result = await _productoRepo.Create(producto);
+                if(result < 0)
+                {
+                    ViewBag.MensajeError = "Ocurrio un error al crear el producto, intentelo de nuevo";
+                    return View(producto);
+                }
                 /// redireccionar al index
                 return RedirectToAction(nameof(Index));
             }
@@ -67,7 +72,12 @@ namespace Practica.Controllers
             // validamos que el producto editado es valido
             if (ModelState.IsValid)
             {
-                await _productoRepo.Update(producto);
+                var result = await _productoRepo.Update(producto);
+                if(result < 0)
+                {
+                    ViewBag.MensajeError = "Error al editar el producto, intentelo de nuevo";
+                    return View(producto);
+                }
                 // redireccionamos al index
                 return RedirectToAction(nameof(Index));
             }
