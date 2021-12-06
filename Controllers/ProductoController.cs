@@ -40,6 +40,7 @@ namespace Practica.Controllers
                     ViewBag.MensajeError = "Ocurrio un error al crear el producto, intentelo de nuevo";
                     return View(producto);
                 }
+                TempData["success"] = "El producto se creo correctamente";
                 /// redireccionar al index
                 return RedirectToAction(nameof(Index));
             }
@@ -79,6 +80,7 @@ namespace Practica.Controllers
                     ViewBag.MensajeError = "Error al editar el producto, intentelo de nuevo";
                     return View(producto);
                 }
+                TempData["success"] = "El producto se edito correctamente";
                 // redireccionamos al index
                 return RedirectToAction(nameof(Index));
             }
@@ -108,7 +110,7 @@ namespace Practica.Controllers
         {
             var producto = await _productoRepo.GetById(id);
             if(producto != null) await _productoRepo.Delete(producto);
-            
+            TempData["success"] = "El producto se borro correctamente";
             return RedirectToAction(nameof(Index));
         }
 
